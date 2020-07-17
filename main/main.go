@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
@@ -37,7 +36,6 @@ func init() {
 func main() {
 	router.POST("/login", Login)
 	router.POST("/refresh", Refresh)
-	router.POST("/refresh", DeleteTokens)
 
 	log.Fatal(router.Run(":8080"))
 }
@@ -348,7 +346,7 @@ func Refresh(c *gin.Context) {
 }
 
 
-func  DeleteTokens(authD *AccessDetails) error {
+/*func  DeleteTokens(authD *AccessDetails) error {
 	//get the refresh uuid
 	refreshUuid := fmt.Sprintf("%s++%d", authD.AccessUuid, authD.UserId)
 	//delete access token
@@ -366,4 +364,4 @@ func  DeleteTokens(authD *AccessDetails) error {
 		return errors.New("something went wrong")
 	}
 	return
-}
+}*/
